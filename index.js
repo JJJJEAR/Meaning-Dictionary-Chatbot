@@ -26,7 +26,7 @@ app.post('/webhook', line.middleware(lineConfig), async (req, res) => {
 
 const handleEvent = async (event) => {
   if (event.type !== 'message' || event.message.type !== 'text') {
-    replyMessage = 'Sorry, please enter any words.';
+    replyMessage = 'Please enter any words.';
   } else if (event.type === 'message') {
     try {
       replyMessage = await DictionaryAPI(event.message.text);
@@ -43,7 +43,7 @@ async function DictionaryAPI(word) {
  
     console.log(langdetect.detectOne(word)); 
     if(langdetect.detectOne(word) =='th')  {
-      return 'Please type English Word';
+      return 'Please type English word';
     }else{
     const response = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/' + word);
     let Msg = '';
@@ -63,8 +63,8 @@ async function DictionaryAPI(word) {
     return Msg;
   }
   } catch (err) {
-    console.error('Error getting dictionary definition: ', err);
-    return 'Something went wrong.';
+    console.error(err);
+    return 'Please Enter a word';
   }
 }
 
