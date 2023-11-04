@@ -41,7 +41,6 @@ const handleEvent = async (event) => {
 async function DictionaryAPI(word) {
   try {
  
-    console.log(langdetect.detectOne(word)); 
     if(langdetect.detectOne(word) =='th')  {
       return 'Please type English word';
     }else{
