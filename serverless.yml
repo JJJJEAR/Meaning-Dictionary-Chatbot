@@ -1,0 +1,16 @@
+service: dictionary-meaning
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          path: webhook
+          method: POST
+package:
+  individually: true 
+  exclude:
+    - node_modules/**

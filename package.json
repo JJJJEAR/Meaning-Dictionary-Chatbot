@@ -1,11 +1,12 @@
 {
-  "name": "echo-bot",
+  "name": "dictionary-bot",
   "version": "0.0.0",
   "description": "An example LINE bot just to echo messages",
   "main": "index.js",
   "scripts": {
     "build-sdk": "cd ../../; npm i; npm run build",
-    "start": "node ."
+    "start": "node index.js",
+    "deploy": "serverless deploy"
   },
   "dependencies": {
     "@line/bot-sdk": "*",
