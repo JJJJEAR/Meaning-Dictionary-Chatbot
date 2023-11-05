@@ -71,10 +71,10 @@
         }
       }
     },
-    "AppLogGroup": {
+    "HelloLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/dictionary-meaning-dev-app"
+        "LogGroupName": "/aws/lambda/dictionary-bot-dev-hello"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +102,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "dictionary-meaning",
+                  "dictionary-bot",
                   "dev",
                   "lambda"
                 ]
@@ -120,7 +120,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/dictionary-meaning-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/dictionary-bot-dev*:*"
                     }
                   ]
                 },
@@ -131,7 +131,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/dictionary-meaning-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/dictionary-bot-dev*:*:*"
                     }
                   ]
                 }
@@ -144,7 +144,7 @@
           "Fn::Join": [
             "-",
             [
-              "dictionary-meaning",
+              "dictionary-bot",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -155,18 +155,18 @@
         }
       }
     },
-    "AppLambdaFunction": {
+    "HelloLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/dictionary-meaning/dev/1699111459674-2023-11-04T15:24:19.674Z/app.zip"
+          "S3Key": "serverless/dictionary-bot/dev/1699161564586-2023-11-05T05:19:24.586Z/hello.zip"
         },
-        "Handler": "index.handler",
+        "Handler": "handler.hello",
         "Runtime": "nodejs18.x",
-        "FunctionName": "dictionary-meaning-dev-app",
+        "FunctionName": "dictionary-bot-dev-hello",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -177,23 +177,23 @@
         }
       },
       "DependsOn": [
-        "AppLogGroup"
+        "HelloLogGroup"
       ]
     },
-    "AppLambdaVersionkaE9yChs3DCvOEXXClKP87VwBjlZMiBUzihUwpPZQ": {
+    "HelloLambdaVersion6OUJv2bWETmAHxbhd8HEwr4gt4zPkR6iN0kYgkPuE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "AppLambdaFunction"
+          "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "bJjMBtbEgrZM3qlis5tFYZxLUE2HmaHmOFpZc7cJUaY="
+        "CodeSha256": "IkQYMdYO84U5uyI7yj484D0XSg6h7Adbyo0rUyvnqwg="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-dictionary-meaning",
+        "Name": "dev-dictionary-bot",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -248,7 +248,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "AppLambdaFunction",
+                    "HelloLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -260,10 +260,10 @@
         "MethodResponses": []
       },
       "DependsOn": [
-        "AppLambdaPermissionApiGateway"
+        "HelloLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1699111456907": {
+    "ApiGatewayDeployment1699161561991": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -275,12 +275,12 @@
         "ApiGatewayMethodWebhookPost"
       ]
     },
-    "AppLambdaPermissionApiGateway": {
+    "HelloLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "AppLambdaFunction",
+            "HelloLambdaFunction",
             "Arn"
           ]
         },
@@ -319,16 +319,16 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-dictionary-meaning-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-dictionary-bot-dev-ServerlessDeploymentBucketName"
       }
     },
-    "AppLambdaFunctionQualifiedArn": {
+    "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionkaE9yChs3DCvOEXXClKP87VwBjlZMiBUzihUwpPZQ"
+        "Ref": "HelloLambdaVersion6OUJv2bWETmAHxbhd8HEwr4gt4zPkR6iN0kYgkPuE"
       },
       "Export": {
-        "Name": "sls-dictionary-meaning-dev-AppLambdaFunctionQualifiedArn"
+        "Name": "sls-dictionary-bot-dev-HelloLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
@@ -354,7 +354,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-dictionary-meaning-dev-ServiceEndpoint"
+        "Name": "sls-dictionary-bot-dev-ServiceEndpoint"
       }
     }
   }

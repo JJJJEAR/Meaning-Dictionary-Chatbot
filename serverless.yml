@@ -1,26 +1,21 @@
-service: dictionary-meaning
+service: dictionary-bot
+
+frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs18.x
 
 functions:
-  app:
-    handler: index.handler
+  hello:
+    handler: handler.hello
     events:
       - http:
-          path: webhook
+          path: /webhook
           method: POST
-
-plugins:
-  - serverless-apigw-binary
-
+        authorizer:
+            required: flase
 package:
-  individually: true
+  individually: true 
   exclude:
     - node_modules/**
-
-custom:
-  serverless-offline:
-    # ปิดการใช้งานการเรียก app.listen() ในโหมด offline
-    noPrependStageInUrl: true
