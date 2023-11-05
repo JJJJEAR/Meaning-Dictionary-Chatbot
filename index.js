@@ -5,7 +5,6 @@ const env = dotenv.config().parsed;
 const axios = require('axios').default;
 const app = express();
 const langdetect = require('langdetect');
-// const serverless = require('serverless-http');
 
 const lineConfig = {
   channelAccessToken: env.ACCESS_TOKEN,
