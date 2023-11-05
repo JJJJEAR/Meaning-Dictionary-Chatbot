@@ -5,10 +5,10 @@
 ### This is a Back-end Internship test from NXZ Group
 
 ***Using***
-* DictionaryApi.
+* DictionaryApi
 * Node.js
 * Line Developers
-* Microsoft Azure for Deploy
+* Microsoft Azure 
 
 ### Bot LineID : ***@816eeguj***
 
