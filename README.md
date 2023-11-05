@@ -10,12 +10,14 @@
 * Line Developers
 * Microsoft Azure for Deploy
 
-### Bot LineID : ### ***@816eeguj***
+### Bot LineID : ***@816eeguj***
 
 
 ![LineImage](./LineImage.png)
 
 *** Scan here for Test my LineChatbot ***
+
+#### Developed By Jullajak Saksri
 
 
 
