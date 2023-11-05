@@ -1,0 +1,26 @@
+service: dictionary-meaning
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http:
+          path: webhook
+          method: POST
+
+plugins:
+  - serverless-apigw-binary
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+
+custom:
+  serverless-offline:
+    # ปิดการใช้งานการเรียก app.listen() ในโหมด offline
+    noPrependStageInUrl: true
