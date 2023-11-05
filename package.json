@@ -4,9 +4,7 @@
   "description": "An example LINE bot just to echo messages",
   "main": "index.js",
   "scripts": {
-    "build-sdk": "cd ../../; npm i; npm run build",
-    "start": "node index.js",
-    "deploy": "serverless deploy"
+    "start": "node index.js"
   },
   "dependencies": {
     "@line/bot-sdk": "*",
