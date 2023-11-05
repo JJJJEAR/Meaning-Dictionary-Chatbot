@@ -3,10 +3,10 @@
 ## Line chatbot for meaning Dictionary 
 
 ***Using***
-* DictionaryApi.
+* DictionaryApi
 * Node.js
 * Line Developers
-* Microsoft Azure for Deploy
+* Microsoft Azure 
 
 ### Bot LineID : ***@816eeguj***
 
