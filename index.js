@@ -48,10 +48,11 @@ async function DictionaryAPI(word) {
     if(langdetect.detectOne(word) =='th')  {
       return 'Please type English word';
     }else{
-    const response = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/' + word);
+    const response = await axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+word);
     let Msg = '';
     if (response.data && response.data.length > 0) {
       const meanings = response.data[0].meanings;
+      
       meanings.forEach((meaning) => {
         const partOfSpeech = meaning.partOfSpeech;
         const definition = meaning.definitions[0].definition;
